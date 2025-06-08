@@ -1,235 +1,198 @@
-# OBINexus AST-Aware Bytecode Generation System with Zero Trust
+# RIFT POC: AST-Aware Bytecode Generation with Zero Trust Governance
 
-A revolutionary approach to programming language engineering that transforms traditional fragmented development pipelines into unified, efficient processes through AST-Aware semantic preservation and Zero Trust cryptographic governance.
+A systematic compilation pipeline implementing AST-Aware bytecode generation with cryptographic governance, QA-driven validation, and Sinphase architectural structuring.
 
-## Overview
+## Architecture Overview
 
-The OBINexus AST-Aware system implements a comprehensive compilation methodology that:
+The RIFT (Rapid Iteration Framework Technology) POC implements a 5-stage compilation pipeline with Zero Trust cryptographic governance enforced at each stage transition.
 
-- **Preserves semantic integrity** throughout all transformation phases
-- **Maintains AST lineage tracking** for complete traceability 
-- **Enforces architectural policies** through formal validation
-- **Provides dual post-processing paths** for optimized deployment
-- **Integrates formal verification** with cryptographic signing
-- **Implements Zero Trust principles** with Residual Trust enforcement
+### Pipeline Stages
 
-## Zero Trust Enhancement
+| Stage | Directory | Function | Security Level |
+|-------|-----------|----------|----------------|
+| 0 | `rift-poc-stage-0` | Tokenization/Lexical Analysis | Standard |
+| 1 | `rift-poc-stage-1` | Parsing/Grammar Analysis | Standard |
+| 3 | `rift-poc-stage-3` | AST Generation/Contextualization | High |
+| 4 | `rift-poc-stage-4` | Bytecode Generation | **Maximum** |
+| 5 | `rift-poc-stage-5` | Program Output/Execution | **Maximum** |
 
-This enhanced version introduces cryptographic governance at every stage of the Rift compilation pipeline:
+### Source Organization
 
-### Core Zero Trust Principles
+- **Current POC Source**: `rift-poc-nlink-project-1/` contains the working implementation
+- **Stage Isolation**: Each `rift-poc-stage-N/` directory contains isolated components following Sinphase principles
+- **Build Orchestration**: `nlink` → `polybuild` toolchain integration
 
-1. **Cryptographic Signing**: Every `.rift.N` artifact is cryptographically signed
-2. **Residual Trust**: Never trust previous artifacts without fresh verification
-3. **Fail-Fast Governance**: Immediate abortion on any trust violation
-4. **Auditability**: Complete audit trail of all cryptographic operations
+## Core Technologies
 
-### Pipeline Security Levels
+### AEGIS (Automaton Engine for Generative Interpretation & Syntax)
+- Regular expression automaton model for flexible syntax recognition
+- Pattern-based transformation system
+- Data-oriented parser with functional IR generation
+- Unified compilation pipeline with semantic preservation
 
-| Stage | File | Security Level | Description |
-|-------|------|----------------|-------------|
-| 0 | *.rift.0 | Standard | Token + Type analysis |
-| 1 | *.rift.1 | Standard | Parser output |
-| 3 | *.rift.3 | High | AST output |
-| 4 | *.rift.4 | **Maximum** | Bytecode output - HIGH security |
-| 5 | *.rift.5 | **Maximum** | Program output - HIGHEST security |
+### Sinphase (Single-Pass Hierarchical Structuring)
+- Cost-based architectural governance
+- Hierarchical component isolation
+- Single-pass compilation requirements
+- Deterministic build behavior with acyclic dependency graphs
 
-## Quick Start with Zero Trust
+### Zero Trust Governance
+- Cryptographic signing of all `.rift.N` artifacts
+- Residual Trust enforcement - no artifact trusted without fresh verification
+- RSA-4096 bit keys with SHA-256 signatures
+- Fail-fast governance on any trust violation
 
-### 1. Initialize Zero Trust Environment
+## Build System Requirements
 
+### Initialization
 ```bash
-# Clone and setup project
-git clone <repository>
-cd rift-poc-nlink-project-1
-
-# Run enhanced orchestration with Zero Trust
-./orchestrate.sh
-
-# Initialize Zero Trust (done automatically)
-make zero-trust-init
-```
-
-### 2. Verify Cryptographic Setup
-
-```bash
-# Verify cryptographic keys
-make verify-keys
-
-# Check Zero Trust configuration
-ls -la keys/
-# Should show:
-# -rw------- rift_signing_key.pem  (private key)
-# -rw-r--r-- rift_signing_pub.pem  (public key)
-```
-
-### 3. Compile with Zero Trust Pipeline
-
-```bash
-# Create a simple .rift file
-echo 'function main() { return 0; }' > test.rift
-
-# Run Zero Trust compilation pipeline
-make rift-zero-trust-run FILE=test.rift
-
-# Verify all artifacts are signed
-ls -la build/test.rift.*
-# Should show both .rift.N files and .rift.N.sig signature files
-```
-
-## Architecture
-
-```
-Raw AST → Contextualization → Policy Attachment → IRP Transform → Post-Processing
-    ↓            ↓                 ↓                ↓               ↓
- Semantic    Policy         Architectural     AST-Aware      Dual Output
- Analysis    Binding        Awareness         Bytecode       (ASM/AXC)
-    ↓            ↓                 ↓                ↓               ↓
-[SIGN]       [VERIFY]           [SIGN]           [VERIFY]        [SIGN]
-Zero Trust Cryptographic Governance Layer
-```
-
-## Build System
-
-### Zero Trust Commands
-
-```bash
-# Initialize Zero Trust environment
+# Initialize Zero Trust cryptographic environment
 make zero-trust-init
 
-# Compile with Zero Trust enforcement
-make rift-zero-trust-run FILE=myfile.rift
-
-# Verify cryptographic keys
+# Verify cryptographic key integrity
 make verify-keys
-
-# Clean build artifacts (preserves keys)
-make clean
-
-# Remove cryptographic keys (WARNING: destructive)
-make clean-keys
 ```
 
-### Traditional Commands (Enhanced)
-
+### Development Workflow
 ```bash
-# Build all components with Zero Trust support
-make all
-
-# Run validation tests
+# Validate all QA requirements and run test suites
 make test
 
-# Run compliance validation
-make validate
+# Build with Zero Trust pipeline enforcement
+make build
 
-# Install system components
-make install
+# Execute complete Zero Trust compilation pipeline
+./scripts/rift-zero-trust-pipeline.sh <input.rift>
 ```
 
-## Zero Trust Script Usage
+### Pipeline Execution
+The Zero Trust pipeline processes `.rift` files through all stages:
+1. **Stage 0→1**: Tokenization with cryptographic signing
+2. **Stage 1→3**: Parsing with signature verification + new signing
+3. **Stage 3→4**: AST transformation with mandatory verification
+4. **Stage 4→5**: Bytecode generation with maximum security enforcement
+5. **Output**: Cryptographically attested program artifacts
 
-The Zero Trust pipeline can be run directly:
+## QA-Driven Architecture
 
+### Required QA Components
+Each stage directory must contain:
+
+```
+rift-poc-stage-N/
+├── src/                     # Implementation
+├── include/                 # Headers  
+├── tests/
+│   └── qa_mocks/           # QA artifact blocks (REQUIRED)
+├── QA/
+│   └── edge_case_registry.md # Edge case documentation
+└── nlink/                   # Build orchestration
+```
+
+### QA Validation Framework
+- **Edge Case Registry**: `QA/edge_case_registry.md` documents boundary conditions
+- **QA Artifact Blocks**: `tests/qa_mocks/` contains validation implementations
+- **Automated Testing**: All stages must pass `make test` validation
+- **Boundary Analysis**: Comprehensive edge case detection and validation
+
+### QA Integration Points
+- **Memory Governance**: Token lifecycle validation with anti-reversion protection
+- **Entropy Validation**: Shannon entropy calculation with context-aware validation
+- **Stage Transitions**: Progressive validation with security scaling
+- **Cryptographic Boundaries**: Signature verification and key integrity validation
+
+## Technical Specifications
+
+### AST-Aware Bytecode Generation
+- **Semantic Preservation**: AST lineage tracking throughout compilation
+- **Policy Attachment**: Formal architectural validation
+- **IRP Transformation**: Intermediate Representation Processing with optimization
+- **Dual Post-Processing**: Multiple output formats (ASM/AXC)
+
+### Cryptographic Implementation
 ```bash
-# Direct script execution
-./scripts/rift-zero-trust-pipeline.sh myfile.rift
+# Key locations (generated by make zero-trust-init)
+keys/rift_signing_key.pem     # Private key (600 permissions)
+keys/rift_signing_pub.pem     # Public key (distributable)
 
-# The script will:
-# 1. Verify input file exists
-# 2. Check cryptographic keys are available
-# 3. Compile through all stages (0→1→3→4→5)
-# 4. Sign each artifact after generation
-# 5. Verify previous artifact before next stage (Residual Trust)
-# 6. Provide comprehensive audit trail
+# Artifact signing pattern
+input.rift → input.rift.0 + input.rift.0.sig
+input.rift.0 → input.rift.1 + input.rift.1.sig
+# ... continuing through all stages
 ```
 
-## Security Features
+### Cost-Based Governance
+Dynamic cost evaluation triggers architectural reorganization:
 
-### Cryptographic Governance
+```
+Cost = Σ(metric_i × weight_i) + circular_penalty + temporal_pressure
 
-- **RSA-4096 bit keys** for maximum security
-- **SHA-256 signature algorithm** for integrity verification
-- **Tamper-evident signatures** for all compilation artifacts
-- **Residual Trust enforcement** prevents bypass attacks
-
-### Compliance Integration
-
-- **NASA-STD-8739.8** compliance for safety-critical systems
-- **Comprehensive audit trails** for regulatory requirements
-- **Cryptographic attestation** for deployment verification
-- **Fail-fast governance** for immediate violation detection
-
-### High-Value Artifact Protection
-
-Stages 4 and 5 (bytecode and program generation) receive maximum security:
-- **Mandatory cryptographic signing**
-- **Enhanced verification requirements**
-- **Strict Residual Trust enforcement**
-- **Immediate failure on any trust violation**
-
-## Security Considerations
-
-### Key Management
-
-- Private keys are generated with 4096-bit RSA for maximum security
-- Private key permissions set to 600 (owner read-write only)
-- Public keys are freely distributable for verification
-- Key rotation should be performed every 90 days in production
-
-### Threat Model
-
-The Zero Trust implementation protects against:
-- **Artifact tampering** during compilation pipeline
-- **Supply chain attacks** through unsigned dependencies
-- **Time-of-check/time-of-use** vulnerabilities
-- **Privilege escalation** through unsigned artifacts
-
-### Production Deployment
-
-For production environments:
-1. Generate keys on secure, air-gapped systems
-2. Store private keys in Hardware Security Modules (HSMs)
-3. Implement automated key rotation procedures
-4. Monitor all signature verification events
-5. Implement incident response for trust violations
-
-## Tennis Case Study with Zero Trust
-
-The included tennis case study demonstrates state machine minimization with Zero Trust governance:
-
-```bash
-# Run optimized tennis tracker with cryptographic verification
-make rift-zero-trust-run FILE=examples/tennis_optimized.rift
-
-# All state transitions are cryptographically verified
-# Demonstrates practical governance in finite state machines
+Metrics: include_depth, function_calls, external_deps, complexity, link_deps
+Threshold: 0.6 triggers isolation protocol
 ```
 
-## Contributing
+## Directory Structure Compliance
 
-This project follows the OBINexus methodology with enhanced security:
+### Sinphase Enforcement
+- **Acyclic Dependencies**: All component relationships must remain acyclic
+- **Bounded Complexity**: Cost functions limit coupling within measurable thresholds  
+- **Single-Pass Compilation**: Deterministic compilation order required
+- **Hierarchical Isolation**: Components maintain clear boundaries through governance contracts
 
-1. **Quality over quantity** - Comprehensive validation over rapid iteration
-2. **Waterfall methodology** - Systematic phase-gate progression  
-3. **Formal verification** - Mathematical correctness guarantees
-4. **Semantic preservation** - Maintaining program meaning through transformations
-5. **Zero Trust governance** - Cryptographic verification at every step
+### Build System Integration
+- **nlink Orchestration**: Package and dependency management
+- **polybuild Integration**: Multi-stage build coordination
+- **Independent Compilation**: Each stage compiles independently
+- **Explicit Dependencies**: No hidden coupling through transitive dependencies
 
-## License
+## Validation Requirements
 
-Copyright (c) 2025 OBINexus Computing - All Rights Reserved
+### Mandatory Checks
+1. **Cryptographic Integrity**: All signatures must verify
+2. **QA Artifact Presence**: `tests/qa_mocks/` must exist and contain valid QA blocks
+3. **Build Success**: `make build` must complete without errors
+4. **Test Validation**: `make test` must pass all validation suites
+5. **Zero Trust Compliance**: All artifacts must be cryptographically signed
 
-This software implements patented state machine minimization, AST optimization, and Zero Trust governance technologies.
+### Stage Transition Validation
+- **Signature Verification**: Previous stage artifacts verified before processing
+- **Entropy Validation**: Context-aware entropy analysis at each transition
+- **Memory Governance**: Token lifecycle validation with governance contracts
+- **Anti-Reversion**: Protection against unauthorized rollback attempts
+
+## Implementation Status
+
+### Current State
+- **POC Source**: Active development in `rift-poc-nlink-project-1/`
+- **Stage Isolation**: Individual stage directories established
+- **Zero Trust Pipeline**: Cryptographic governance implemented
+- **QA Framework**: Edge case validation system operational
+- **Build System**: nlink + polybuild integration functional
+
+### Compliance Status
+- ✅ Zero Trust cryptographic signing implemented
+- ✅ QA-driven architecture with edge case validation
+- ✅ Sinphase directory structuring enforced
+- ✅ AEGIS pattern-based transformation system
+- ✅ AST-Aware semantic preservation pipeline
+- ✅ Cost-based governance checkpoints operational
+
+## Technical Dependencies
+
+### Core Requirements
+- **Cryptographic Libraries**: RSA-4096, SHA-256 implementation
+- **Build Tools**: make, nlink, polybuild toolchain
+- **QA Framework**: Edge case validation and boundary testing
+- **Governance Engine**: Cost calculation and threshold enforcement
+
+### Integration Points
+- **AEGIS Engine**: Pattern recognition and transformation
+- **Sinphase Validator**: Architectural compliance checking  
+- **Zero Trust Pipeline**: Cryptographic verification and signing
+- **Memory Governance**: Token lifecycle and anti-reversion protection
 
 ---
 
-## Zero Trust Command Reference
+**Technical Implementation**: OBINexus Computing methodology with formal verification and cryptographic attestation.
 
-| Command | Purpose | Security Level |
-|---------|---------|----------------|
-| `make zero-trust-init` | Initialize cryptographic environment | Foundation |
-| `make rift-zero-trust-run FILE=X` | Run secure compilation pipeline | Maximum |
-| `make verify-keys` | Validate cryptographic key integrity | Verification |
-| `./scripts/rift-zero-trust-pipeline.sh X` | Direct pipeline execution | Maximum |
-
-**Remember**: In Zero Trust mode, every artifact must be cryptographically verified. There are no exceptions or bypass mechanisms.
+**Build Verification**: All components must pass cryptographic validation and QA compliance checks before deployment.
